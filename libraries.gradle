@@ -1,0 +1,30 @@
+ext.repoUrl = "${project.'repo'}"
+ext.spring_cloud = project.properties['version.springcloud'] ?: 'Hoxton.SR8'
+
+ext.easipay = [
+        "support": "net.easipay.ptcs:easipay-support:1.1.44",
+]
+ext.lib = [
+        spring_boot                   : "org.springframework.boot:spring-boot-starter",
+        spring_boot_web               : "org.springframework.boot:spring-boot-starter-web",
+        spring_boot_aop               : "org.springframework.boot:spring-boot-starter-aop",
+        spring_boot_validation        : 'org.springframework.boot:spring-boot-starter-validation',
+        spring_boot_alibaba_druid     : "com.alibaba:druid-spring-boot-starter:1.2.4",
+        mybatis_plus                  : 'com.baomidou:mybatis-plus-boot-starter:3.4.1',
+        commons_lang3                 : 'org.apache.commons:commons-lang3:3.11',
+        hutool_all                    : 'cn.hutool:hutool-all:5.5.4',
+        oracle                        : "com.oracle:ojdbc6:11.2.0.3",
+        apollo_client                 : "com.ctrip.framework.apollo:apollo-client:1.7.0",
+        junit                         : "junit:junit:4.13.1",
+        xstream                       : "com.thoughtworks.xstream:xstream:1.4.15",
+        spring_cloud_starter_openfeign: "org.springframework.cloud:spring-cloud-starter-openfeign:3.0.0",
+        spring_cloud_context          : "org.springframework.cloud:spring-cloud-context:3.0.0",
+        spring_cloud_eureka_server    : "org.springframework.cloud:spring-cloud-starter-netflix-eureka-server",
+        spring_cloud_eureka_client    : "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client",
+        rocketmq_spring_boot_starter  : "org.apache.rocketmq:rocketmq-spring-boot-starter:2.1.1",
+        jackson_core_databind         : "com.fasterxml.jackson.core:jackson-databind:2.12.2",
+        jackson_core_annotations      : "com.fasterxml.jackson.core:jackson-annotations:2.12.2",
+        jackson_core                  : "com.fasterxml.jackson.core:jackson-core:2.12.2",
+
+]
+

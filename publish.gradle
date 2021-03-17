@@ -1,0 +1,24 @@
+apply plugin: 'maven-publish'
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId project.group
+            artifactId project.name
+            version project.version
+            //如果是war包填写components.web，如果是jar包填写components.java
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            //指定要上传的maven私服仓库
+            url = "${project.'repo.url'}"
+            //认证用户和密码
+            credentials {
+                username "${project.'repo.username'}"
+                password "${project.'repo.password'}"
+            }
+        }
+    }
+}

@@ -1,0 +1,80 @@
+plugins {
+    id "java"
+    id "idea"
+    id "io.franzbecker.gradle-lombok" version "2.2"
+    id 'org.springframework.boot' version '2.3.8.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+}
+
+apply from: 'libraries.gradle'
+
+allprojects {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+
+    group 'net.easipay.cloud'
+    version '1.0.0'
+
+    repositories {
+        maven { url "${project.'owner.repo'}" }
+        maven { url "${project.'repo'}" }
+        mavenCentral()
+        jcenter()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'io.franzbecker.gradle-lombok'
+    // 使用spring boot的自动依赖管理
+    apply plugin: 'io.spring.dependency-management'
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+    compileJava {
+        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    idea {
+        module {
+            inheritOutputDirs = false
+            outputDir = file("$buildDir/classes/main/")
+            testOutputDir = file("$buildDir/classes/test/")
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    // App 配置
+    ['easipay-cloud-controller'].forEach {
+        project(":${it}") {
+            apply plugin: 'application'
+            apply plugin: 'org.springframework.boot'
+
+            bootJar {
+                launchScript()
+            }
+        }
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:2.4.3"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${spring_cloud}"
+        }
+    }
+
+    dependencies {
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+}
+
+
+test {
+    useJUnitPlatform()
+}
+

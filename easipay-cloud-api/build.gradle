@@ -1,0 +1,10 @@
+description = 'easipay-cloud-api'
+version = '1.0.0'
+apply from: "$rootDir/publish.gradle"
+
+
+dependencies {
+    compileOnly lib.spring_cloud_starter_openfeign
+    compileOnly easipay.support
+    compileOnly lib.spring_boot_validation
+}
