@@ -1,5 +1,0 @@
-description = 'easipay-cloud-dao'
-
-dependencies {
-    compileOnly lib.mybatis_plus
-}

@@ -1,0 +1,17 @@
+description = 'basis-cloud-service'
+
+dependencies {
+    compileOnly project(':basis-cloud-api')
+    compileOnly project(':basis-cloud-dao')
+    compileOnly project(':basis-cloud-common')
+
+    compileOnly easipay.support
+
+    compileOnly lib.spring_boot
+
+    compileOnly lib.mybatis_plus
+    compileOnly lib.hutool_all
+    compileOnly lib.spring_cloud_context
+    compileOnly lib.rocketmq_spring_boot_starter
+
+}

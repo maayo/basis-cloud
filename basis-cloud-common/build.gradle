@@ -1,0 +1,25 @@
+description = 'basis-cloud-common'
+version = '1.0.0'
+apply from: "$rootDir/publish.gradle"
+
+
+dependencies {
+    compileOnly easipay.support
+
+    compileOnly lib.spring_boot_validation
+    compileOnly lib.spring_boot_web
+    compileOnly lib.spring_boot_aop
+
+    compileOnly lib.commons_lang3
+    compileOnly lib.hutool_all
+    compileOnly lib.jackson_core_databind
+    compileOnly lib.jackson_core_annotations
+    compileOnly lib.jackson_core
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+}
+
+
+
+

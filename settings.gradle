@@ -1,7 +1,7 @@
-rootProject.name = 'easipay-cloud'
-include 'easipay-cloud-common'
-include 'easipay-cloud-controller'
-include 'easipay-cloud-api'
-include 'easipay-cloud-dao'
-include 'easipay-cloud-service'
+rootProject.name = 'basis-cloud'
+include 'basis-cloud-common'
+include 'basis-cloud-controller'
+include 'basis-cloud-api'
+include 'basis-cloud-dao'
+include 'basis-cloud-service'
 

@@ -1,0 +1,5 @@
+description = 'basis-cloud-dao'
+
+dependencies {
+    compileOnly lib.mybatis_plus
+}

@@ -1,0 +1,34 @@
+description = 'basis-cloud-controller'
+version = '1.0.0'
+apply from: "$rootDir/publish.gradle"
+
+
+dependencies {
+    implementation project(':basis-cloud-api')
+    implementation project(':basis-cloud-common')
+    implementation project(':basis-cloud-dao')
+    implementation project(':basis-cloud-service')
+
+    implementation easipay.support
+
+
+    implementation lib.spring_boot_web
+    implementation lib.spring_boot_validation
+    implementation lib.spring_boot_aop
+    implementation lib.spring_boot_alibaba_druid
+
+    implementation lib.mybatis_plus
+
+    implementation lib.commons_lang3
+    implementation lib.hutool_all
+    implementation lib.oracle
+    implementation lib.apollo_client
+    implementation lib.junit
+    implementation lib.spring_cloud_context
+    implementation lib.spring_cloud_starter_openfeign
+    implementation lib.spring_cloud_eureka_client
+
+}
+
+
+
