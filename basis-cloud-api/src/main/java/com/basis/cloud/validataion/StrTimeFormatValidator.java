@@ -2,12 +2,13 @@
 package com.basis.cloud.validataion;
 
 import lombok.extern.slf4j.Slf4j;
-import net.easipay.support.util.StringUtil;
+import org.springframework.util.StringUtils;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Objects;
 
 /**
  * @author jia.yang
@@ -27,7 +28,7 @@ public class StrTimeFormatValidator implements ConstraintValidator<StrTimeFormat
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
         boolean flag = true;
-        if (StringUtil.isNotBlank(value)) {
+        if (Objects.nonNull(value) && !"".equals(value)) {
             try {
                 SimpleDateFormat format = new SimpleDateFormat(formatStr);
                 format.setLenient(false);

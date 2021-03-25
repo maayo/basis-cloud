@@ -4,7 +4,8 @@ apply from: "$rootDir/publish.gradle"
 
 
 dependencies {
+    implementation project(':basis-cloud-common')
+
     compileOnly lib.spring_cloud_starter_openfeign
-    compileOnly easipay.support
     compileOnly lib.spring_boot_validation
 }

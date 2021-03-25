@@ -1,9 +1,6 @@
 ext.repoUrl = "${project.'repo'}"
 ext.spring_cloud = project.properties['version.springcloud'] ?: 'Hoxton.SR8'
 
-ext.easipay = [
-        "support": "net.easipay.ptcs:easipay-support:1.1.44",
-]
 ext.lib = [
         spring_boot                   : "org.springframework.boot:spring-boot-starter",
         spring_boot_web               : "org.springframework.boot:spring-boot-starter-web",
@@ -14,7 +11,6 @@ ext.lib = [
         commons_lang3                 : 'org.apache.commons:commons-lang3:3.11',
         hutool_all                    : 'cn.hutool:hutool-all:5.5.4',
         oracle                        : "com.oracle:ojdbc6:11.2.0.3",
-        apollo_client                 : "com.ctrip.framework.apollo:apollo-client:1.7.0",
         junit                         : "junit:junit:4.13.1",
         xstream                       : "com.thoughtworks.xstream:xstream:1.4.15",
         spring_cloud_starter_openfeign: "org.springframework.cloud:spring-cloud-starter-openfeign:3.0.0",

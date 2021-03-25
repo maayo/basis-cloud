@@ -5,8 +5,6 @@ dependencies {
     compileOnly project(':basis-cloud-dao')
     compileOnly project(':basis-cloud-common')
 
-    compileOnly easipay.support
-
     compileOnly lib.spring_boot
 
     compileOnly lib.mybatis_plus

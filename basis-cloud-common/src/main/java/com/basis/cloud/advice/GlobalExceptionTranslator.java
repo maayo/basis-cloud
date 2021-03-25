@@ -1,10 +1,9 @@
 package com.basis.cloud.advice;
 
+import com.basis.cloud.dto.RestResponse;
+import com.basis.cloud.enums.ErrorCode;
+import com.basis.cloud.exception.BizException;
 import lombok.extern.slf4j.Slf4j;
-import net.easipay.support.common.ResponseCode;
-import net.easipay.support.dto.Response;
-import net.easipay.support.exception.BizException;
-import net.easipay.support.exception.CommonErrorCode;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -33,21 +32,21 @@ public class GlobalExceptionTranslator {
      */
     @ExceptionHandler(BindException.class)
     @ResponseBody
-    public Response<String> handleBindException(BindException e) {
+    public RestResponse<String> handleBindException(BindException e) {
         return buildErrorResponse(e, e.getBindingResult());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
-    public Response<String> handleBindException(MethodArgumentNotValidException e) {
+    public RestResponse<String> handleBindException(MethodArgumentNotValidException e) {
         return buildErrorResponse(e, e.getBindingResult());
     }
 
     @ExceptionHandler(BizException.class)
     @ResponseBody
-    public Response<String> handleBizException(BizException e, HttpServletRequest request) {
+    public RestResponse<String> handleBizException(BizException e) {
         log.error("业务异常", e);
-        return Response.error(e.getCode(), e.getMessage());
+        return RestResponse.fail(e.getCode(), e.getMessage());
     }
 
     /**
@@ -58,12 +57,12 @@ public class GlobalExceptionTranslator {
      */
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public Response<String> handleException(Exception e, HttpServletRequest request) {
+    public RestResponse<String> handleException(Exception e, HttpServletRequest request) {
         log.error(e.getMessage(), e);
-        return Response.error(CommonErrorCode.E999999.code(), CommonErrorCode.E999999.msg());
+        return RestResponse.fail(ErrorCode.REQUEST_FAIL);
     }
 
-    private Response<String> buildErrorResponse(Exception e, BindingResult bindingResult) {
+    private RestResponse<String> buildErrorResponse(Exception e, BindingResult bindingResult) {
         if (null != bindingResult && bindingResult.hasErrors()) {
             StringBuffer msg = new StringBuffer();
             List<ObjectError> objectErrors = bindingResult.getAllErrors();
@@ -79,9 +78,9 @@ public class GlobalExceptionTranslator {
                             .append(";");
                 }
             }
-            return Response.error(ResponseCode.INVALID_ARGUMENT.getCode(), msg.toString());
+            return RestResponse.fail(ErrorCode.PARAMETER_ERROR.getCode(), msg.toString());
         }
         log.warn("参数校验异常: ", e);
-        return Response.error(ResponseCode.INVALID_ARGUMENT.getCode(), "参数校验失败");
+        return RestResponse.fail(ErrorCode.PARAMETER_ERROR.getCode(), "参数校验失败");
     }
 }

@@ -11,7 +11,7 @@ import java.util.Date;
 /**
  * mybatisPlus 自动填充
  */
-@Component
+//@Component
 public class MyMetaObjectHandler implements MetaObjectHandler {
 
     @Override

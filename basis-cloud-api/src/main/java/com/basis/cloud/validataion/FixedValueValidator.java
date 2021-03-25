@@ -1,10 +1,9 @@
 
 package com.basis.cloud.validataion;
 
-import net.easipay.support.util.StringUtil;
-
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import java.util.Objects;
 
 /**
  * @author jia.yang
@@ -26,7 +25,7 @@ public class FixedValueValidator implements ConstraintValidator<FixedValue, Obje
     @Override
     public boolean isValid(Object value, ConstraintValidatorContext context) {
         boolean flag = false;
-        if (StringUtil.isBlank(String.valueOf(value))) {
+        if (Objects.isNull(value) && "".equals(String.valueOf(value))) {
             flag = true;
         }
         if (value instanceof String) {

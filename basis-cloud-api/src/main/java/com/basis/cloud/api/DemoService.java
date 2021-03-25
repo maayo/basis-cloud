@@ -1,7 +1,7 @@
 package com.basis.cloud.api;
 
+import com.basis.cloud.dto.RestResponse;
 import com.basis.cloud.dto.TestReq;
-import net.easipay.support.dto.Response;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,10 +13,10 @@ import javax.validation.Valid;
  * @version 1.0
  * @date 2021/3/17 11:26
  */
-@FeignClient("easipay-Cloud")
+@FeignClient("basis-cloud")
 public interface DemoService {
 
     @PostMapping(value = "/queryFrontInfo")
-    Response<String> queryFrontInfo(@RequestBody @Valid TestReq request);
+    RestResponse<String> queryFrontInfo(@RequestBody @Valid TestReq request);
 
 }

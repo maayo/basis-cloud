@@ -9,9 +9,6 @@ dependencies {
     implementation project(':basis-cloud-dao')
     implementation project(':basis-cloud-service')
 
-    implementation easipay.support
-
-
     implementation lib.spring_boot_web
     implementation lib.spring_boot_validation
     implementation lib.spring_boot_aop
@@ -22,7 +19,6 @@ dependencies {
     implementation lib.commons_lang3
     implementation lib.hutool_all
     implementation lib.oracle
-    implementation lib.apollo_client
     implementation lib.junit
     implementation lib.spring_cloud_context
     implementation lib.spring_cloud_starter_openfeign
